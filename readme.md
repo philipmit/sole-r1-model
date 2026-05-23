@@ -39,20 +39,20 @@ https://philipmit.github.io/sole-r1/
 
 ## Model Checkpoints
 
-Final model checkpoint available in HF format at [pschro/SOLE-R1-8B](https://huggingface.co/pschro/SOLE-R1-8B) 
+Final model checkpoint available in HF format at [SOLE-R1-8B](https://huggingface.co/Philip-MIT/SOLE-R1-8B) 
 
 ---
 
 ## Training Dataset
 
-Full training dataset (2TB) is available in HF format at [pschro/sole_training_data](https://huggingface.co/datasets/pschro/sole_training_data) 
+Full training dataset (2TB) is available in HF format at [sole_training_data](https://huggingface.co/datasets/Philip-MIT/sole_training_data) 
 
 ### Streaming
 ```python
 from datasets import load_dataset
 
 ds = load_dataset(
-    "pschro/sole_training_data",
+    "Philip-MIT/sole_training_data",
     split="train",
     streaming=True,
 )
@@ -78,7 +78,7 @@ for row in ds:
 from huggingface_hub import snapshot_download
 
 local_path = snapshot_download(
-    repo_id="pschro/sole_training_data",
+    repo_id="Philip-MIT/sole_training_data",
     repo_type="dataset",
     local_dir="/path/to/local/sole_training_data",
 )
