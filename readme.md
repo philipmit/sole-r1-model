@@ -10,32 +10,85 @@ SOLE-R1 is a video-language reasoning model designed for guiding online RL with 
 </p>
 
 ---
-### 📄 Paper (arXiv) - coming soon!
+### Paper (arXiv)
+https://arxiv.org/abs/2603.28730
 
-<!-- ### 📄 Project page 
-https://sole-r1.github.io
- -->
+### Project page
+https://philipmit.github.io/sole-r1/
+
+## 🚀 Quick Start
+
 
 ## 🎥 Demos
 
 Example videos demonstrating SOLE-R1 frame-level reasoning and task progress prediction can be found at:
 
-https://sole-r1.github.io
+https://philipmit.github.io/sole-r1/
 
 ---
 
 ## Model Checkpoints
 
-Full SFT and SFT+RLVR checkpoints for SOLE-R1 will be uploaded soon be uploaded to HuggingFace!
+Final model checkpoint available in HF format at [pschro/SOLE-R1-8B](https://huggingface.co/pschro/SOLE-R1-8B) 
 
 ---
 
 ## Training Dataset
 
-Complete training dataset for SOLE-R1 will soon be uploaded to HuggingFace!
+Full training dataset (2TB) is available in HF format at [pschro/sole_training_data](https://huggingface.co/datasets/pschro/sole_training_data) 
 
+### Streaming
+```python
+from datasets import load_dataset
+
+ds = load_dataset(
+    "pschro/sole_training_data",
+    split="train",
+    streaming=True,
+)
+
+# Print one example
+for row in ds:
+    print(row)
+    break
+    # {'image': <PIL.PngImagePlugin.PngImageFile image mode=RGB size=1176x784 at 0x7F5F26A107C0>, 
+    #  'problem': "Here is an image containing multiple camera views of a robot attempting to complete a task. The views on the top are from an external camera. The views on the bottom are from the robot's wrist camera. The views from the very first timestep are shown to the left. The views from the previous timestep are shown in the middle. The views from the current timestep are shown to the right. The task description is: close the left drawer. The task progress for the very first timestep is 0%. The task progress for the previous timestep is 0%. Predict the task progress for the current timestep.", 
+    #  'solution_orig': '1', 
+    #  'solution': '<think>At the previous timestep, the left drawer is open and the gripper is off to the side with no contact to the drawer or its handle. At the current timestep, the gripper has shifted slightly closer to the face of the left drawer while still not making contact, and the drawer remains open. This small approach suggests initial progress toward closing the drawer. Given the previous task progress of 0%, I would predict the current task progress to be about 1%. To complete the task, the robot still needs to reach the drawer front or handle, establish contact, and push the drawer fully shut.</think><answer>1%</answer>', 
+    #  'prompt': '[{"role": "system", "content": "You are an expert roboticist with the goal of predicting task progress percentages given frames from a video of a robot attempting to complete a task. You first think, in the form of an internal monologue, before providing your final answer. Your reasoning process MUST BE enclosed within <think> </think> tags and should include detailed reasoning. Your final answer MUST BE enclosed within <answer> </answer> tags and should be a integer (positive or negative) representing current task progress percentage. Example output format: <think>[detailed reasoning process]</think><answer>[current task progress]%</answer>"}, {"role": "user", "content": [{"type": "image"}, {"type": "text", "text": "Here is an image containing multiple camera views of a robot attempting to complete a task. The views on the top are from an external camera. The views on the bottom are from the robot\'s wrist camera. The views from the very first timestep are shown to the left. The views from the previous timestep are shown in the middle. The views from the current timestep are shown to the right. The task description is: close the left drawer. The task progress for the very first timestep is 0%. The task progress for the previous timestep is 0%. Predict the task progress for the current timestep."}]}, {"role": "assistant", "content": [{"type": "text", "text": "<think>At the previous timestep, the left drawer is open and the gripper is off to the side with no contact to the drawer or its handle. At the current timestep, the gripper has shifted slightly closer to the face of the left drawer while still not making contact, and the drawer remains open. This small approach suggests initial progress toward closing the drawer. Given the previous task progress of 0%, I would predict the current task progress to be about 1%. To complete the task, the robot still needs to reach the drawer front or handle, establish contact, and push the drawer fully shut.</think><answer>1%</answer>"}]}]', 
+    #  'image_name': 'CloseDrawer_demo_526_lev7-two-two_timestep_0_8.jpg', 
+    #  'from_annotation': 1, 
+    #  'completion': '<think>At the previous timestep, the left drawer is open and the gripper is off to the side with no contact to the drawer or its handle. At the current timestep, the gripper has shifted slightly closer to the face of the left drawer while still not making contact, and the drawer remains open. This small approach suggests initial progress toward closing the drawer. Given the previous task progress of 0%, I would predict the current task progress to be about 1%. To complete the task, the robot still needs to reach the drawer front or handle, establish contact, and push the drawer fully shut.</think><answer>1%</answer>', 
+    #  'data_source': 'processed_0717_annot2_CloseDrawer_sft_hf'}
+```
+
+## Dowloading the full dataset (2TB) to a local directory
+```python
+from huggingface_hub import snapshot_download
+
+local_path = snapshot_download(
+    repo_id="pschro/sole_training_data",
+    repo_type="dataset",
+    local_dir="/path/to/local/sole_training_data",
+)
+```
 ---
 
+## 📚 Citation
+
+If you use SOLE-R1 data or models in your research, please cite:
+
+    @article{schroeder2026soler1,
+        title         = {SOLE-R1: Video-Language Reasoning as the Sole Reward for On-Robot Reinforcement Learning},
+        author        = {Schroeder, Philip and Weng, Thomas and Schmeckpeper, Karl and Rosen, Eric and Hart, Stephen and Biza, Ondrej},
+        journal       = {arXiv preprint arXiv:2603.28730},
+        year          = {2026},
+        eprint        = {2603.28730},
+        archivePrefix = {arXiv},
+        primaryClass  = {cs.RO},
+        doi           = {10.48550/arXiv.2603.28730},
+        url           = {https://arxiv.org/abs/2603.28730}
+    }
 
 
 ## 📄 License
@@ -47,8 +100,7 @@ See the LICENSE file for details.
 
 ## 🙋 Contact
 
-For questions or issues, please open a GitHub Issue here.
+For questions or issues, please open a GitHub Issue or contact the authors directly.
 
 ---
-
 
