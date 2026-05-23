@@ -22,8 +22,12 @@ https://arxiv.org/abs/2603.28730
 ### Project page
 https://philipmit.github.io/sole-r1/
 
-## 🚀 Quick Start
+## Example video
 
+
+## 🚀 Quick Start
+```python
+```
 
 ## 🎥 Demos
 
@@ -68,7 +72,7 @@ for row in ds:
     #  'data_source': 'processed_0717_annot2_CloseDrawer_sft_hf'}
 ```
 
-## Dowloading the full dataset (2TB) to a local directory
+### Dowloading the full dataset (2TB) to a local directory
 ```python
 from huggingface_hub import snapshot_download
 
