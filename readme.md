@@ -2,6 +2,7 @@
 This repository contains the official implementation of the methods proposed in the paper:
 
 > SOLE-R1: Video-Language Reasoning as the Sole Reward for On-Robot RL
+>
 > Philip Schroeder, Thomas Weng, Karl Schmeckpeper, Eric Rosen, Stephen Hart, Ondrej Biza
 
 SOLE-R1 is a video-language reasoning model designed for guiding online RL with per-timestep chain-of-thought reasoning and progress prediction.
