@@ -24,6 +24,7 @@ https://philip-mit.github.io/sole-r1/
 
 ## Example video
 
+<video src="assets/robosuite_lift_episode_12_unsuccessful_max_reward_38.mp4" controls></video>
 
 ## 🚀 Quick Start
 [RoboReason](https://github.com/Philip-MIT/roboreason) provides the easiest way for downloading and using SOLE-R1, along with other recent reward models such as Robometer, RoboReward, and TOPReward.
