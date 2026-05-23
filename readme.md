@@ -1,5 +1,7 @@
-# SOLE-R1: Video-Language Reasoning as the 
-# Sole Reward for On-Robot RL
+<h1 align="center">
+  SOLE-R1: Video-Language Reasoning as the Sole Reward<br>
+  for On-Robot RL
+</h1>
 This repository contains the official implementation of the methods proposed in the paper:
 
 > SOLE-R1: Video-Language Reasoning as the Sole Reward for On-Robot RL
