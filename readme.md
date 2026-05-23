@@ -28,7 +28,9 @@ https://philip-mit.github.io/sole-r1/
 ## Example video
 
 <!-- <video src="assets/robosuite_lift_episode_12_unsuccessful_max_reward_38.mp4" controls></video> -->
-https://github.com/user-attachments/assets/0d804a7d-c00a-4206-98be-421c91329f8e
+<!-- https://github.com/user-attachments/assets/0d804a7d-c00a-4206-98be-421c91329f8e -->
+
+https://github.com/user-attachments/assets/4df13587-2fdf-4635-b0af-00daeed0be7e
 
 
 ## 🚀 Quick Start
