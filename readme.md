@@ -12,7 +12,7 @@ This is the repository for the paper:
 SOLE-R1 is a video-language reasoning model designed for guiding online RL with per-timestep chain-of-thought reasoning and progress prediction.
 
 <p align="center">
-  <img src="assets/fig1_v3b.png"  alt="Figure 1" width="1000">
+  <img src="assets/fig1_v3.png"  alt="Figure 1" width="1000">
 </p>
 
 ---
