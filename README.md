@@ -4,12 +4,15 @@
   Sole Reward for On-Robot RL
 </h1>
 
+<div align="center">
 [![arXiv](https://img.shields.io/badge/arXiv-2603.02115-b31b1b.svg)](https://arxiv.org/abs/2603.28730)
-[![Website](https://img.shields.io/badge/Website-topreward.github.io-green)](https://philip-mit.github.io/sole-r1/)
+[![Website](https://img.shields.io/badge/Website-philip-mit.github.io/sole-r1-green)](https://philip-mit.github.io/sole-r1/)
 [![Model](https://img.shields.io/badge/Model-FFD21E?logo=huggingface)](https://huggingface.co/Philip-MIT/SOLE-R1-8B)
 [![Data](https://img.shields.io/badge/Dataset-RBM--1M-FFD21E?logo=huggingface)](https://huggingface.co/Philip-MIT/sole_training_data)
-[![GitHub](https://img.shields.io/badge/GitHub-robometer-181717?logo=github)](https://github.com/Philip-MIT/sole-r1-model)
+<!-- [![GitHub](https://img.shields.io/badge/GitHub-robometer-181717?logo=github)](https://github.com/Philip-MIT/sole-r1-model) -->
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+</div>
+
 
 
 This is the repository for the paper:
