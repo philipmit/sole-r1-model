@@ -1,0 +1,12 @@
+[project]
+name = "reward-client"
+version = "1.0.0"
+requires-python = ">=3.10"
+dependencies = [
+    "numpy",
+    "opencv-python",
+    "Pillow",
+    "matplotlib",
+    "h5py",
+    "agentlace@git+https://github.com/youliangtan/agentlace.git@cf2c337c5e3694cdbfc14831b239bd657bc4894d",
+]

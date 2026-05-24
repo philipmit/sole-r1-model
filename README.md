@@ -1,6 +1,4 @@
 
-
-
 <h1 align="center">
   SOLE-R1: Video-Language Reasoning as the<br>
   Sole Reward for On-Robot RL
@@ -24,6 +22,7 @@ https://arxiv.org/abs/2603.28730
 
 ### Project page
 https://philip-mit.github.io/sole-r1/
+
 
 ## Example video
 
@@ -131,6 +130,20 @@ local_path = snapshot_download(
 ```
 ---
 
+
+
+## Reward Server
+
+See [reward_server/README.md](reward_server/README.md) for full setup, usage, and API documentation.
+
+---
+
+## Reward Client
+
+See [reward_client/README.md](reward_client/README.md) for full setup and usage documentation.
+
+---
+
 ## 📚 Citation
 
 If you use SOLE-R1 data or models in your research, please cite:
@@ -160,3 +173,4 @@ This project is released under the MIT License unless otherwise specified.
 For questions or issues, please open a GitHub Issue or contact the authors directly.
 
 ---
+

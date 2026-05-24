@@ -1,0 +1,67 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "reward_server"
+version = "1.0.0"
+description = "async reward server"
+readme = "README.md"
+requires-python = ">=3.10"
+
+authors = [
+  { name = "Philip Schroeder", email = "pschroeder@rai-inst.com" },
+  { name = "Thomas Weng", email = "tweng@rai-inst.com" },
+  { name = "Ondrej Biza", email = "obiza@rai-inst.com" },
+]
+
+dependencies = [
+    "accelerate>=1.2.1",
+    "agentlace@git+https://github.com/youliangtan/agentlace.git@cf2c337c5e3694cdbfc14831b239bd657bc4894d",
+    "bitsandbytes>=0.43.0",
+    "black>=24.4.2",
+    "datasets>=3.2.0",
+    "deepspeed==0.15.4",
+    "distilabel[vllm,ray,openai]>=1.5.2",
+    "einops>=0.8.0",
+    "flake8>=6.0.0",
+    "flash-attn==2.7.0.post2",
+    "google-genai",
+    "hf_transfer>=0.1.4",
+    "huggingface-hub[cli]>=0.19.2,<1.0",
+    "hydra-core",
+    "imageio",
+    "isort>=5.12.0",
+    "jmespath>=0.7.1,<2.0.0",
+    "liger_kernel==0.5.2",
+    "math-verify",
+    "megfile",
+    "openai",
+    "packaging>=23.0",
+    "parameterized>=0.9.0",
+    "pillow",
+    "pytest",
+    "qwen_vl_utils==0.0.14",
+    "safetensors>=0.3.3",
+    "scipy",
+    "sentencepiece>=0.1.99",
+    "tensordict==0.10.0",
+    "torch==2.9.0",
+    "transformers==4.57.3",
+    "trl==0.23.0",
+    "vllm==0.12.0",
+    "wandb>=0.19.1",
+]
+
+[project.optional-dependencies]
+dev = [
+  "matplotlib",
+  "pytest",
+  "PyQt5",
+]
+
+[tool.uv.extra-build-dependencies]
+flash-attn = [
+  "torch==2.5.0",  # This cuts down build time from hours to ~1 minute.
+  "ninja",
+]

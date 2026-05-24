@@ -1,0 +1,4 @@
+service_name: rewards
+server_port: 8001
+max_workers: 4
+verbose: true

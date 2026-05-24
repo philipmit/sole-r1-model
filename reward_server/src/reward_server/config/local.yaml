@@ -1,0 +1,16 @@
+checkpoint_path: "~/qwen_checkpoints/sole-r1"  # Override with your actual checkpoint path
+service_name: rewards
+server_port: 8001
+save_debug_data: false
+max_prompt_length: 2048
+
+load_model_params:
+  gpu_memory_utilization: 0.9
+  enable_prefix_caching: true
+  max_model_len: 131072  # This works on A6000, can be set to null for H100.
+  temperature: 1.0  # Only used as a default.
+  top_p: 0.9  # Probably don't change this.
+  top_k: 50  # Probably don't change this.
+  max_tokens: 200
+  min_pixels: 3136  # Probably don't change this.
+  max_pixels: 12845056  # Probably don't change this.
