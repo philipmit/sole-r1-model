@@ -1,11 +1,10 @@
-
 <h1 align="center">
   SOLE-R1: Video-Language Reasoning as the<br>
   Sole Reward for On-Robot RL
 </h1>
 
 [![arXiv](https://img.shields.io/badge/arXiv-2603.02115-b31b1b.svg)](https://arxiv.org/abs/2603.28730)
-[![Website](https://img.shields.io/badge/Website-sole--r1-87CEEB?logo=githubpages)](https://philip-mit.github.io/sole-r1/)
+[![Website](https://img.shields.io/badge/Website-SOLE--R1-87CEEB?logo=githubpages)](https://philip-mit.github.io/sole-r1/)
 [![Model](https://img.shields.io/badge/Model-SOLE--R1--8B-blue?logo=huggingface)](https://huggingface.co/Philip-MIT/SOLE-R1-8B)
 [![Data](https://img.shields.io/badge/Dataset-SOLE--Training-FFD21E?logo=huggingface)](https://huggingface.co/datasets/Philip-MIT/sole_training_data)
 [![License: MIT](https://img.shields.io/badge/License-MIT-black.svg)](https://opensource.org/licenses/MIT)
@@ -34,7 +33,7 @@ https://arxiv.org/abs/2603.28730
 https://philip-mit.github.io/sole-r1/
 
 
-## Example videos
+## Example videos comparing SOLE-R1 rewards vs Robometer, RoboReward, TOPReward, and Gemini-3-Pro
 
 <!-- <video src="assets/robosuite_lift_episode_12_unsuccessful_max_reward_38.mp4" controls></video> -->
 <!-- https://github.com/user-attachments/assets/0d804a7d-c00a-4206-98be-421c91329f8e -->
@@ -42,6 +41,8 @@ https://philip-mit.github.io/sole-r1/
 <!-- https://github.com/user-attachments/assets/4df13587-2fdf-4635-b0af-00daeed0be7e -->
 
 https://github.com/user-attachments/assets/cd481f28-0cb3-4874-bd50-1ec3ad8326ec
+
+## Example videos showing SOLE-R1 reasoning traces
 
 https://github.com/user-attachments/assets/87d52be7-260c-4f0f-a9d5-8e4915bacab7
 
@@ -201,13 +202,37 @@ gcloud config set auth/disable_credentials False
 
 ## Reward Server
 
-See [reward_server/README.md](reward_server/README.md) for full setup, usage, and API documentation.
+`reward_server/` runs a ZMQ reward inference service for SOLE-R1. Given a task string plus robot video frames, it uses a local SOLE-R1 checkpoint to predict dense per-timestep task-progress rewards and returns both parsed progress scores and raw model reasoning outputs.
+
+```bash
+cd reward_server
+bash run.sh --checkpoint-path /path/to/sole-r1-checkpoint --port 8001
+```
+
+The default service name is `rewards`. Inputs include `task`, `front_images`, optional `wrist_images`, `temperature`, `from_zero`, and `external_only`. The server can score either front-only video or paired front/wrist views, comparing frames against the start state and, by default, the previous timestep.
 
 ---
 
 ## Reward Client
 
-See [reward_client/README.md](reward_client/README.md) for full setup and usage documentation.
+`reward_client/` is a CLI for querying a running reward server from local robot videos, image folders, NumPy arrays, or HDF5 files. It samples frames, sends them to the server, prints per-timestep progress rewards, and can optionally save JSON results and an annotated visualization video.
+
+```bash
+cd reward_client
+uv sync
+
+uv run python main.py \
+  --host localhost \
+  --port 8001 \
+  --service-name rewards \
+  --front /path/to/front_video.webm \
+  --wrist /path/to/wrist_video.webm \
+  --task "open the drawer" \
+  --output-file rewards.json \
+  --video-output rewards.webm
+```
+
+Omit `--wrist` for front-camera-only scoring. Use `--from-zero` to score each timestep independently relative to the first frame, or use `--target-fps`, `--source-fps`, and `--stride` to control frame sampling.
 
 ---
 
