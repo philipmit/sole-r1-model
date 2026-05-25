@@ -1,3 +1,4 @@
+
 <h1 align="center">
   SOLE-R1: Video-Language Reasoning as the<br>
   Sole Reward for On-Robot RL
@@ -8,6 +9,8 @@
 [![Model](https://img.shields.io/badge/Model-SOLE--R1--8B-blue?logo=huggingface)](https://huggingface.co/Philip-MIT/SOLE-R1-8B)
 [![Data](https://img.shields.io/badge/Dataset-SOLE--Training-FFD21E?logo=huggingface)](https://huggingface.co/datasets/Philip-MIT/sole_training_data)
 [![License: MIT](https://img.shields.io/badge/License-MIT-black.svg)](https://opensource.org/licenses/MIT)
+
+
 
 
 
