@@ -50,18 +50,18 @@ https://github.com/user-attachments/assets/3c444096-d3dd-47c7-b09d-90b0756d0f72
 https://github.com/user-attachments/assets/87d52be7-260c-4f0f-a9d5-8e4915bacab7
 
 ## Quick start: Example reward and reasoning generation and plotting
-[RoboReason](https://github.com/Philip-MIT/roboreason) provides the easiest way for downloading and using SOLE-R1, along with other recent reward models such as Robometer, RoboReward, and TOPReward.
+[RewardGen](https://github.com/Philip-MIT/rewardgen) provides the easiest way for downloading and using SOLE-R1, along with other recent reward models such as Robometer, RoboReward, and TOPReward.
 
 ```python
-# install package: pip install -U roboreason 
-# or clone repo: git clone https://github.com/Philip-MIT/roboreason
+# install package: pip install -U rewardgen 
+# or clone repo: git clone https://github.com/Philip-MIT/rewardgen
 
-import roboreason as rr
+from rewardgen import generate, video_plot
 
 video_paths = ['test_videos/robosuite/lift/unsuccessful/robosuite_lift_episode_12_unsuccessful_max_reward_38.mp4']
 task_description="Pick up the cube from the table."
 
-rewards, reasoning_traces = rr.generate(model="SOLE-R1",  task_description=task_description, video_paths=video_paths, view_type_per_video=['external and wrist'], verbose=False)
+rewards, reasoning_traces = generate(model="SOLE-R1",  task_description=task_description, video_paths=video_paths, view_type_per_video=['external and wrist'], verbose=False)
 print(rewards)
 # [[0.0, 4.0, 8.0, 8.666666666666666, 9.333333333333334, 10.0, 14.0, 18.0, 22.0, 28.0, 34.0, 35.0, 36.0, 37.0, 36.333333333333336, 35.666666666666664, 35.0, 33.5, 32.0, 33.0, 34.0, 35.0, 37.0, 39.0, 41.0]]
 
@@ -72,7 +72,7 @@ print(reasoning_traces)
 ## Plotting with show_reasoning_traces=True
 output_sole = {"model": "SOLE-R1", "rewards": rewards[0], "reasoning_traces": reasoning_traces[0]}
 
-rr.video_plot(
+video_plot(
     outputs=[output_sole], 
     plot_save_path='model_outputs/sole-r1/robosuite/lift/unsuccessful/robosuite_lift_episode_12_unsuccessful_max_reward_38.mp4', 
     video_path=video_paths[0],
@@ -85,7 +85,7 @@ rr.video_plot(
 ## Reward generation and plotting across many videos
 
 ```python
-import roboreason as rr
+from rewardgen import generate, video_plot
 
 import glob
 video_paths = glob.glob('test_videos/robosuite/lift/unsuccessful/*.mp4')
@@ -94,7 +94,7 @@ task_description="Pick up the cube from the table."
 
 
 ## REWARD GENERATION
-rewards, reasoning_traces = rr.generate(model="SOLE-R1",  task_description=task_description, video_paths=video_paths, view_type='external and wrist', verbose=False)
+rewards, reasoning_traces = generate(model="SOLE-R1",  task_description=task_description, video_paths=video_paths, view_type='external and wrist', verbose=False)
 
 ## PLOTTING
 import json
@@ -106,7 +106,7 @@ for video_idx in range(len(video_paths)):
         data = json.load(f)
     #
     output_groundtruth = {"model": "Ground truth", "rewards": data['ground-truth rewards']}
-    rr.video_plot(
+    video_plot(
         outputs = [output_groundtruth, output_sole], 
         plot_save_path = plot_save_dir + video_paths[video_idx].split('test_videos/')[-1] , 
         video_path = video_paths[video_idx],
@@ -130,8 +130,8 @@ https://philip-mit.github.io/sole-r1/
 Final model checkpoint available in HF format at [SOLE-R1-8B](https://huggingface.co/Philip-MIT/SOLE-R1-8B) 
 
 ```python
-# Optional: pre-download model checkpoint using RoboReason 
-from roboreason.utils.model_utils import get_model_dir
+# Optional: pre-download model checkpoint using RewardGen 
+from rewardgen.utils.model_utils import get_model_dir
 get_model_dir('sole-r1')
 ```
 
@@ -185,7 +185,7 @@ local_path = snapshot_download(
 # 1) Install gcloud: https://cloud.google.com/sdk/docs/install
 
 # 2) Go to target directory
-# cd /path/to/roboreason
+# cd /path/to/rewardgen
 
 # Optional: disable credentials so you don't have to authenticate
 gcloud config set auth/disable_credentials True
